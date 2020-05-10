@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS</title>
+    <style>
+    .main {
+      width: 260px;
+      margin: 0 auto;
+      font-family: 'Tahoma';
+    }
+    .chart {
+      position:relative;
+      margin: 40px auto 20px;
+      width: 220px;
+      height: 220px;
+    }
+    .chart canvas {
+      display: block;
+      position:absolute;
+      top:0;
+      left:0;
+    }
+    .chart span {
+      color:#555;
+      display:block;
+      line-height:220px;
+      text-align:center;
+      width:220px;
+      font-family:sans-serif;
+      font-size:40px;
+      font-weight:100;
+      margin-left:5px;
+    }
+    .type, .summary {
+      font-size: 40px;
+      text-align: left;
+      font-weight: bold;
+      margin: 20px auto;
+    }
+    .summary {
+      font-size: 23px;
+    }
+    .buttons input {
+      display: inline-block;
+      color: #fff;
+      font-size: 12px;
+      width: 45%;
+      margin: 1%;
+      height: 30px;
+      cursor: pointer;
+      line-height: 27px;
+      background-color: #437caf;
+      border: none;
+      border-radius: 3px;
+    }
+    .buttons input#stop {
+      background-color: #f54046;
+    }
+    p {
+      color: #afafaf;
+      font-size: 12px;
+      margin: 2px 0;
+    }
+    form input {
+      width: 46%;
+      margin: 0;
+      padding: 3px 2px;
+      border: 1px solid #afafaf;
+    }
+    .form-item {
+      margin: 5px 0;
+    }
+    form label {
+      display: inline-block;
+      width: 120px;
+      font-size: 12px;
+      color: #afafaf;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <form>
+        <div class="form-item">
+          <label for="startTime">Разминка (мин.)</label>
+          <input id="startTime" type="text" placeholder="Разминка (5 мин)" />
+        </div>
+        <div class="form-item">
+          <label for="finishTime">Заминка (мин.)</label>
+          <input id="finishTime" type="text" placeholder="Заминка (5 мин)" />
+        </div>
+        <p>Интервалы:</p>
+        <div class="form-item">
+          <label for="startTime">Инт. время (мин.)</label>
+          <input id="workingTime" type="text" placeholder="интервалы (30 мин.)" />
+        </div>
+        <div class="form-item">
+          <label for="startTime">Работа (сек.)</label>
+          <input id="intervalWorkTime" type="text" placeholder="работа (30 сек.)" />
+        </div>
+        <div class="form-item">
+          <label for="startTime">Отдых (мин.)</label>
+          <input id="intervalRestTime" type="text" placeholder="отдых (2 мин.)" />
+        </div>
+      </form>
+      <div class="chart" id="graph"></div>
+      <div class="type" id="type"></div>
+      <div id="summary" class="summary"></div>
+      <div class="buttons">
+        <input type="button" name="start" id="start" value="Старт" />
+        <input type="button" name="stop" id="stop" value="Стоп" />
+      </div>
+    </div>
+  </body>
+  <script src="./index.js" charset="utf-8"></script>
+</html>
+

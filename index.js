@@ -103,10 +103,18 @@ function Stages () {
     }
   }
 
+  const getPersent = (val, stageType) => (val * 100) / stageTypes[stageType].duration
+  const getLabel = (duration) => {
+    const min = parseInt(duration / 60)
+    const sec = parseInt(duration % 60)
+    if (min === 0) return `${sec} сек.`
+    return `${min}:${sec}`
+  }
+
   let stage = 'start'
   let innerCounter = 0
-  let label = `${innerCounter} сек.`
-  let percent = (innerCounter * 100) / (stageTypes[stage].duration)
+  let label = getLabel(innerCounter)
+  let percent = getPersent(innerCounter, stage)
   this.interval = null
 
   this.createInterval = () => {
@@ -148,15 +156,20 @@ function Stages () {
 
     if (innerCounter) {
       if (stage === 'work') {
-        percent = (innerCounter * 100) / (stageTypes[stage].duration)
-        label = `${innerCounter} сек.`
+        percent = getPersent(innerCounter, stage)
+        label = getLabel(innerCounter)
       } else {
-        percent = ((innerCounter - 30) * 100) / (stageTypes[stage].duration)
-        label = `${parseInt((innerCounter - 30) / 60)} мин.`
+        percent = getPersent(
+          innerCounter - stageTypes['work'].duration,
+          stage
+        )
+        label = getLabel(
+          innerCounter - stageTypes['work'].duration
+        )
       }
     } else {
       percent = (counter.value * 100) / (stageTypes[stage].duration)
-      label = `${counter.minutes} мин.`
+      label = getLabel(counter.value)
     }
 
     counter.drawCounter(

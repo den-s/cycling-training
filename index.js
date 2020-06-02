@@ -128,7 +128,7 @@ function Stages () {
         stageTypes[['work', 'rest'].find(t => t === stage) ? 'working' : stage].title,
         counter.minutes
       )
-    }, 10)
+    }, 1000)
   }
 
   const manageStage = () => {

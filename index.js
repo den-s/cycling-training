@@ -7,6 +7,7 @@ function init () {
     const savedOptions = new Options()
     savedOptions.save()
     stages.createInterval()
+    counter.clearCounter()
   }
   const stop = () => {
     clearInterval(stages.interval)
@@ -79,7 +80,7 @@ function Stages () {
     },
     working: {
       title: 'Интервалы',
-      duration: 30 * 60,
+      duration: savedOptions.workingTime,
       color: '#437caf'
     },
     rest: {
@@ -127,7 +128,7 @@ function Stages () {
         stageTypes[['work', 'rest'].find(t => t === stage) ? 'working' : stage].title,
         counter.minutes
       )
-    }, 1000)
+    }, 10)
   }
 
   const manageStage = () => {
